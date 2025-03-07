@@ -10,10 +10,10 @@ class RoleEnum(str,Enum):
 class User(SQLModel,table=True):
     __tablename__ = "users"
     id:Optional[int]=Field(default=None,primary_key=True)
-    name:str=Field(sa_column=Column(max_length=255,))
-    user_name:str=Field(sa_column=Column(unique=True, nullable=False))
-    email:str=Field(sa_column=Column(unique=True,nullable=False))
-    password:str=Field(sa_column=Column(min_length=6,nullable=False))
-    role:RoleEnum=Field(sa_column=Column(default=RoleEnum.user))
+    name:str=Field(max_length=255)
+    user_name:str=Field(unique=True)
+    email:str=Field(unique=True)
+    password:str=Field(min_length=6)
+    role:RoleEnum=Field(default=RoleEnum.user)
 
 

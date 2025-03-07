@@ -16,6 +16,7 @@ async def get_db() -> AsyncSession:
 # Initialize Database (Startup)
 async def init_db():
     async with engine.begin() as conn:
+        from src.model.user_model import User
         await conn.run_sync(SQLModel.metadata.create_all)
     print("✅ Database initialized successfully.")
 
